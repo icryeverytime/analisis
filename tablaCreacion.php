@@ -52,5 +52,20 @@ if ($conn->query($sql) === TRUE) {
     echo "3.- Error creando tablas: " . $conn->error;
   }
 
+  $sql="INSERT INTO Paquete(numpaq,bits,canales)
+    VALUES(1,20,75);
+    INSERT INTO Paquete(numpaq,bits,canales)
+    VALUES(2,50,75);
+    INSERT INTO Paquete(numpaq,bits,canales)
+    VALUES(3,100,100);
+    INSERT INTO Paquete(numpaq,bits,canales)
+    VALUES(4,200,300);
+    ";
+if ($conn->multi_query($sql) === TRUE) {
+    echo "Tablas creadas existosamente";
+  } else {
+    echo "3.- Error creando tablas: " . $conn->error;
+  }
+
 $conn->close();
 ?> 
