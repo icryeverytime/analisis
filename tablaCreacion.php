@@ -10,9 +10,10 @@ if ($conn->connect_error) {
 }
 
 $sql = "CREATE TABLE Paquete (
-    numpaq int(2),
+    numpaq int(2) NOT NULL,
     bits VARCHAR(30) NOT NULL,
     canales VARCHAR(30) NOT NULL,
+    costo int(10) NOT NULL,
     PRIMARY KEY (numpaq)
     );";
 if ($conn->query($sql) === TRUE) {
@@ -21,12 +22,15 @@ if ($conn->query($sql) === TRUE) {
   echo "1.-Error creando tablas: " . $conn->error;
 }
 $sql="CREATE TABLE Cliente (
+    idcliente int(10) NOT NULL AUTO_INCREMENT,
     rfc VARCHAR(30) NOT NULL,
     nombre VARCHAR(30) NOT NULL,
     paquete int(2),
     correo int(2) NOT NULL,
     telefono int(10) NOT NULL,
-    PRIMARY KEY (rfc),
+    segurosocial int(11) NOT NULL,
+    fechadenacimiento DATE NOT NULL,
+    PRIMARY KEY (idcliente),
     CONSTRAINT FOREIGN KEY (paquete) REFERENCES Paquete(numpaq)
 )";
 if ($conn->query($sql) === TRUE) {
@@ -42,29 +46,57 @@ $sql="CREATE TABLE Direccion(
     municipio varchar(30) NOT NULL,
     estado varchar(30) NOT NULL,
     cp int(10) NOT NULL,
-    rfc_cliente VARCHAR(30),
+    id_cliente int(10) NOT NULL,
     PRIMARY KEY (iddirecion),
-    CONSTRAINT FOREIGN KEY (rfc_cliente) REFERENCES Cliente(rfc)
+    CONSTRAINT FOREIGN KEY (id_cliente) REFERENCES Cliente(idcliente)
     );";
 if ($conn->query($sql) === TRUE) {
     echo "Tablas creadas existosamente";
   } else {
     echo "3.- Error creando tablas: " . $conn->error;
   }
-
-  $sql="INSERT INTO Paquete(numpaq,bits,canales)
-    VALUES(1,20,75);
-    INSERT INTO Paquete(numpaq,bits,canales)
-    VALUES(2,50,75);
-    INSERT INTO Paquete(numpaq,bits,canales)
-    VALUES(3,100,100);
-    INSERT INTO Paquete(numpaq,bits,canales)
-    VALUES(4,200,300);
+  $sql="CREATE TABLE Servicio(
+      num_paq int(2) NOT NULL,
+      id_cuenta int(10) NOT NULL,
+      folioservicio int(10) NOT NULL AUTO_INCREMENT,
+      fechacontratacion DATE NOT NULL,
+      regimenfiscal varchar(100) NOT NULL,
+      periodo varchar(100) NOT NULL,
+      fechasigpago DATE NOT NULL,
+      valorunitario float(10) NOT NUlL,
+      importetotalnumer float(10) NOT NULL,
+      importetotalletra varchar(30) NOT NULL,
+      formadepago varchar(30) NOT NULL,
+      montodeimpuestos float(10) NOT NULL,
+      codigobarras varchar(30) NOT NULL,
+      serieCSDDemisor varchar(30) NOT NULL,
+      serieCSDDsat varchar(30) NOT NULL,
+      leyendafinal varchar(30) NOT NULL,
+      referenciabancaria varchar(40) NOT NULL,
+      fechayhorafactura DATE NOT NULL,
+      cadenaSAT varchar(50) NOT NULL,
+      PRIMARY KEY (folioservicio),
+      CONSTRAINT FOREIGN KEY (num_paq) REFERENCES Paquete(numpaq),
+      CONSTRAINT FOREIGN KEY (id_cuenta) REFERENCES Cliente(idcliente)
+    );";
+if ($conn->query($sql) === TRUE) {
+    echo "Tablas creadas existosamente";
+  } else {
+    echo "4.- Error creando tablas: " . $conn->error;
+  }
+  $sql="INSERT INTO Paquete(numpaq,bits,canales,costo)
+    VALUES(1,20,75,200);
+    INSERT INTO Paquete(numpaq,bits,canales,costo)
+    VALUES(2,50,75,300);
+    INSERT INTO Paquete(numpaq,bits,canales,costo)
+    VALUES(3,100,100,400);
+    INSERT INTO Paquete(numpaq,bits,canales,costo)
+    VALUES(4,200,300,500);
     ";
 if ($conn->multi_query($sql) === TRUE) {
     echo "Tablas creadas existosamente";
   } else {
-    echo "3.- Error creando tablas: " . $conn->error;
+    echo "5.- Error creando tablas: " . $conn->error;
   }
 
 $conn->close();
