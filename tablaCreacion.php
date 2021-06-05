@@ -59,21 +59,11 @@ if ($conn->query($sql) === TRUE) {
       id_cuenta int(10) NOT NULL,
       folioservicio int(10) NOT NULL AUTO_INCREMENT,
       fechacontratacion DATE NOT NULL,
-      regimenfiscal varchar(100) NOT NULL,
-      periodo varchar(100) NOT NULL,
       fechasigpago DATE NOT NULL,
       valorunitario float(10) NOT NUlL,
-      importetotalnumer float(10) NOT NULL,
-      importetotalletra varchar(30) NOT NULL,
       formadepago varchar(30) NOT NULL,
       montodeimpuestos float(10) NOT NULL,
-      codigobarras varchar(30) NOT NULL,
-      serieCSDDemisor varchar(30) NOT NULL,
-      serieCSDDsat varchar(30) NOT NULL,
-      leyendafinal varchar(30) NOT NULL,
       referenciabancaria varchar(40) NOT NULL,
-      fechayhorafactura DATE NOT NULL,
-      cadenaSAT varchar(50) NOT NULL,
       PRIMARY KEY (folioservicio),
       CONSTRAINT FOREIGN KEY (num_paq) REFERENCES Paquete(numpaq),
       CONSTRAINT FOREIGN KEY (id_cuenta) REFERENCES Cliente(idcliente)
@@ -83,6 +73,29 @@ if ($conn->query($sql) === TRUE) {
   } else {
     echo "4.- Error creando tablas: " . $conn->error;
   }
+  $sql="CREATE TABLE Factura(
+    id_cuentaFAC int(10) NOT NULL,
+    num_paqFAC int(2) NOT NULL,
+    foliofactura int(10) NOT NULL AUTO_INCREMENT,
+    regimenfiscal varchar(100) NOT NULL,
+    periodo varchar(100) NOT NULL,
+    importetotalnumer float(10) NOT NULL,
+    importetotalletra varchar(30) NOT NULL,
+    codigobarras varchar(30) NOT NULL,
+    serieCSDDemisor varchar(30) NOT NULL,
+    serieCSDDsat varchar(30) NOT NULL,
+    leyendafinal varchar(30) NOT NULL,
+    fechayhorafactura DATE NOT NULL,
+    cadenaSAT varchar(50) NOT NULL,
+    PRIMARY KEY (foliofactura),
+    CONSTRAINT FOREIGN KEY (num_paqFAC) REFERENCES Paquete(numpaq),
+    CONSTRAINT FOREIGN KEY (id_cuentaFAC) REFERENCES Cliente(idcliente)
+  );";
+if ($conn->query($sql) === TRUE) {
+  echo "Tablas creadas existosamente";
+} else {
+  echo "4.- Error creando tablas: " . $conn->error;
+}
   $sql="INSERT INTO Paquete(numpaq,bits,canales,costo)
     VALUES(1,20,75,200);
     INSERT INTO Paquete(numpaq,bits,canales,costo)
