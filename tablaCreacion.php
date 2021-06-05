@@ -23,15 +23,14 @@ if ($conn->query($sql) === TRUE) {
 }
 $sql="CREATE TABLE Cliente (
     idcliente int(10) NOT NULL AUTO_INCREMENT,
-    rfc VARCHAR(30) NOT NULL,
-    nombre VARCHAR(30) NOT NULL,
-    paquete int(2),
-    correo int(2) NOT NULL,
-    telefono int(10) NOT NULL,
-    segurosocial int(11) NOT NULL,
-    fechadenacimiento DATE NOT NULL,
-    PRIMARY KEY (idcliente),
-    CONSTRAINT FOREIGN KEY (paquete) REFERENCES Paquete(numpaq)
+    rfc VARCHAR(13) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,  
+    correo  VARCHAR(50) NOT NULL,
+    telefono VARCHAR(12) NOT NULL,
+    segurosocial VARCHAR(14) NOT NULL,
+    fechadenacimiento VARCHAR(30) NOT NULL,
+    contra VARCHAR(40) NOT NULL,
+    PRIMARY KEY (idcliente)
 )";
 if ($conn->query($sql) === TRUE) {
     echo "Tablas creadas existosamente";
