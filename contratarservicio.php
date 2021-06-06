@@ -41,8 +41,12 @@ if ($result->num_rows > 0) {
   echo "0 results";
 }
 $impuesto=$costo*.16;
-$sql="INSERT INTO Servicio(num_paq,id_cuenta,fechacontratacion,fechasigpago,valorunitario,formadepago,montodeimpuestos,referenciabancaria)
-VALUES ('$numeropaq','$id','$currentdate','$sigpago','$costo','$formadepago','$impuesto','$referencia');";
+$total=$impuesto+$costo;
+$locale = 'es_MX';
+$fmt = numfmt_create($locale, NumberFormatter::SPELLOUT);
+$in_words = numfmt_format($fmt, $total);
+$sql="INSERT INTO Servicio(num_paq,id_cuenta,fechacontratacion,fechasigpago,valorunitario,formadepago,montodeimpuestos,referenciabancaria,importetotalnumer,importetotalletra)
+VALUES ('$numeropaq','$id','$currentdate','$sigpago','$costo','$formadepago','$impuesto','$referencia','$total','$in_words');";
 if ($conn->query($sql) === TRUE) {
     echo "insertado correctamente";
   } else {
