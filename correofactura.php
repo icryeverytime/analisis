@@ -68,28 +68,25 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results factura";
 }
-echo "Numero de cuenta del cliente: ".$id;
-echo "<br>";
-echo "Direccion: ".$nuexterior." ".$calle.", ".$colonia.", ".$municipio.". ".$estado.", ".$cp;
-echo "<br>";
-echo "Regimen fiscal: ".$regimenfiscal;
-echo "<br>";
-echo "Direccion : Av. Lázaro Cárdenas No. 2500. Col Residencial San Agustín 66260, Monterrey, N.L. México <br>";
-echo "Folio de la factura: ".$foliofact."<br";
-echo "Fecha de expedicion".$facturafecha."<br>";
-echo "Numero de paquete".$numpaq."<br>";
-echo "Periodo del uso de servicio: ".$periodo."<br>";
-echo "Feca del siguiente pago: ".$fechasigpago."<br>";
-echo "Valor unitario consignado en numero: ".$valorunitario."<br>";
-echo "Importe total en numero: ".$importetotalnumer."<br>";
-echo "Importe total en letra: ".$importetotalletra."<br>";
-echo "Forma de pago: ".$formadepago."<br>";
-echo "Monto de los impuestos: ".$montodeimpuestos."<br>";
-echo "Codigo de barras: ".$codigobarras."<br>";
-echo "Numero de Serie del CSDD del emisor: ".$serieCSSDDemisor."<br>";
-echo "Numero de Serie del CSDD del SAT: ".$serieCSDDSat."<br>";
-echo "Leyenda Comprobante fiscal: ".$leyendafinal."<br>";
-echo "Referencia Bancaria: ".$referencia."<br>";
-echo "Fecha de emision de certificaion de la factura electronica: ".$facturafecha."<br>";
-echo "Cadena Original del complemento de Certificacion Digital del SAT".$cadenasat."<br>";  
-?>
+
+require '/usr/share/php/libphp-phpmailer/class.phpmailer.php';
+require '/usr/share/php/libphp-phpmailer/class.smtp.php';
+$mail = new PHPMailer;
+$mail->setFrom('chrisitianantonio12322@gmail.com');
+$mail->addAddress('christianantonio123222@gmail.com');
+$mail->Subject = 'Message sent by PHPMailer';
+$mail->Body = 'Hello! use PHPMailer to send email using PHP';
+$mail->IsSMTP();
+$mail->SMTPSecure = 'ssl';
+$mail->Host = 'ssl://smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Port = 465;
+$mail->Username = 'christianantonio12322@gmail.com';
+$mail->Password = 'chrisanto123';
+if(!$mail->send()) {
+  echo 'Email is not sent.';
+  echo 'Email error: ' . $mail->ErrorInfo;
+} else {
+  echo 'Email has been sent.';
+}
+?> 
