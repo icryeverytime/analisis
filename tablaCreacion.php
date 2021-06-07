@@ -21,9 +21,24 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "1.-Error creando tablas: " . $conn->error;
 }
-$sql="CREATE TABLE Cliente (
+$sql="CREATE TABLE Cliente(
     idcliente int(10) NOT NULL AUTO_INCREMENT,
-    rfc VARCHAR(13) NOT NULL,
+    rfc VARCHAR(13),
+    nombre VARCHAR(50) NOT NULL,  
+    correo  VARCHAR(50) NOT NULL UNIQUE,
+    telefono VARCHAR(12),
+    segurosocial VARCHAR(14),
+    fechadenacimiento VARCHAR(30),
+    contra VARCHAR(40) NOT NULL,
+    PRIMARY KEY (idcliente)
+)";
+if ($conn->query($sql) === TRUE) {
+    echo "Tablas creadas existosamente";
+  } else {
+    echo "2.-Error creando tablas: " . $conn->error;
+  }
+  $sql="CREATE TABLE Empleado (
+    idempleado int(10) NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,  
     correo  VARCHAR(50) NOT NULL,
     telefono VARCHAR(12) NOT NULL,
