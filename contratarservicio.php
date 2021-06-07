@@ -1,12 +1,12 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "myDB";
 
 $numeropaq=1;
-$contra="123";
-$correo="christianantonio12322@gmail.com";
+$id=$_SESSION["id"];
 $currentdate=date('Y-m-d');
 $d=strtotime("+1 Months");
 $sigpago=date("Y-m-d", $d);
@@ -16,26 +16,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Conexion fallo: " . $conn->connect_error);
 }
-$sql = "SELECT idcliente FROM Cliente WHERE (contra='$contra' AND correo='$correo')";
-$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-        $id=$row["idcliente"]; 
-        echo $id;
-        echo "<br>"; 
-  }
-} else {
-  echo "0 results";
-}
 
 $sql = "SELECT costo FROM Paquete WHERE (numpaq='$numeropaq')";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-        $costo=$row["costo"];  
-        echo $costo;
+        $costo=$row["costo"]; 
   }
 } else {
   echo "0 results";
