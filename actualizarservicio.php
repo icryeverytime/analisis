@@ -5,11 +5,11 @@ $username = "root";
 $password = "";
 $dbname = "myDB";
 
-$id=$_SESSION["id"];
+$id=$_POST["boton1"];
+$newpackage=$_POST["boton2"];
+echo $id;
+echo $newpackage;
 
-$newpackage=2;
-$contra="123";
-$correo="christianantonio12322@gmail.com";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -22,6 +22,14 @@ if ($conn->query($sql) === TRUE) {
   } else {
     echo "Error actualizando datos: " . $conn->error;
   }
-  
+  $sql ="DELETE FROM Actualizarservicio WHERE cuentaid=$id";
+  if ($conn->query($sql) === TRUE) {
+    echo "Actualizado correctamente";
+  } else {
+    echo "Error actualizando datos: " . $conn->error;
+  }
+
   $conn->close();
+  header('Location:actualizacionservicio.php');
+  exit;
 ?>

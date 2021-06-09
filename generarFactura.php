@@ -6,6 +6,7 @@ $dbname = "myDB";
 $contra="123";
 $correo="christianantonio12322@gmail.com";
 
+$id=$_SESSION["id"];
 
 $currentdate=date('Y-m-d');
 $regimenfiscal="regimen";
