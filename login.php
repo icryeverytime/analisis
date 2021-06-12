@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 $servername = "localhost";
@@ -5,7 +6,7 @@ $username = "root";
 $password = "";
 $dbname = "myDB";
 
-$correo="christianantonio12322@gmail.com";
+$correo="christianantonio123222@gmail.com";
 $contra="123";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -45,3 +46,4 @@ else{
 }
 
 ?>
+</html>

@@ -1,10 +1,24 @@
+<html>
+<head>
+<style type="text/css" media="print">
+        button{
+          display:none;
+        }
+    </style>
+</head>
 <?php
 session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "myDB";
-$id=$_SESSION["id"];
+if (isset($_POST["id"]))
+{
+    $id=$_POST["id"];
+}
+else{
+  $id=$_SESSION["id"];
+}
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -84,4 +98,7 @@ echo "Leyenda Comprobante fiscal: ".$leyendafinal."<br>";
 echo "Referencia Bancaria: ".$referencia."<br>";
 echo "Fecha de emision de certificaion de la factura electronica: ".$facturafecha."<br>";
 echo "Cadena Original del complemento de Certificacion Digital del SAT".$cadenasat."<br>";  
+echo "<button onclick=\"window.print()\">Imprimir factura</button>";
+$conn->close();
 ?>
+</html>

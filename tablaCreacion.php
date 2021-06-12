@@ -23,13 +23,13 @@ if ($conn->query($sql) === TRUE) {
 }
 $sql="CREATE TABLE Cliente(
     idcliente int(10) NOT NULL AUTO_INCREMENT,
-    rfc VARCHAR(13),
     nombre VARCHAR(50) NOT NULL,  
     correo  VARCHAR(50) NOT NULL UNIQUE,
+    contra VARCHAR(40) NOT NULL,
+    rfc VARCHAR(13),
     telefono VARCHAR(12),
     segurosocial VARCHAR(14),
     fechadenacimiento VARCHAR(30),
-    contra VARCHAR(40) NOT NULL,
     PRIMARY KEY (idcliente)
 )";
 if ($conn->query($sql) === TRUE) {
@@ -124,7 +124,44 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "6.- Error creando tablas: " . $conn->error;
 }
-  $sql="INSERT INTO Paquete(numpaq,bits,canales,costo)
+
+  
+$sql="CREATE TABLE Actualizarservicio(
+  nuevopaquete int(2) NOT NULL,
+  cuentaid int(10) NOT NULL
+);";
+if ($conn->query($sql) === TRUE) {
+echo "Tablas creadas existosamente";
+} else {
+echo "Actualizarservicio" . $conn->error;
+}
+$sql="CREATE TABLE Actualizardatos(
+  cuentaid int(10) NOT NULL UNIQUE,
+  calle varchar(30) NOT NULL,
+  nuexterior int(6) NOT NULL,
+  colonia varchar(30) NOT NULL,
+  municipio varchar(30) NOT NULL,
+  estado varchar(30) NOT NULL,
+  cp int(10) NOT NULL,
+  rfc VARCHAR(13),
+  telefono VARCHAR(12),
+  segurosocial VARCHAR(14),
+  fechadenacimiento VARCHAR(30)
+);";
+if ($conn->query($sql) === TRUE) {
+echo "Tablas creadas existosamente";
+} else {
+echo "9.- Error creando tablas: " . $conn->error;
+}
+$sql="INSERT INTO Empleado(nombre,correo,telefono,segurosocial,fechadenacimiento,contra,calle,nuexterior,colonia,municipio,estado,codigopostal,puesto,sueldo,horario,turno,bono,horas,fechadecontratacion)
+  VALUES('Christian','christianantonio123222@gmail.com','4492874398','IMSS-02-008','1999-04-09','123','Felipe Angeles','101','Guadalupe','Aguascalientes','Aguascalientes','92801','Gerente','1000','8 a 9','vespertino','100','10','2010-05-06');
+  ";;
+if ($conn->query($sql) === TRUE) {
+  echo "Tablas creadas existosamente";
+} else {
+  echo "8.- Error creando tablas: " . $conn->error;
+}  
+$sql="INSERT INTO Paquete(numpaq,bits,canales,costo)
     VALUES(1,20,75,200);
     INSERT INTO Paquete(numpaq,bits,canales,costo)
     VALUES(2,50,75,300);
@@ -138,22 +175,5 @@ if ($conn->multi_query($sql) === TRUE) {
   } else {
     echo "7.- Error creando tablas: " . $conn->error;
   }
-  $sql="INSERT INTO Empleado(nombre,correo,telefono,segurosocial,fechadenacimiento,contra,calle,nuexterior,colonia,municipio,estado,codigopostal,puesto,sueldo,horario,turno,bono,horas,fechadecontratacion)
-  VALUES('Christian','christianantonio123222@gmail.com','4492874398','IMSS-02-008','1999-04-09','123','Felipe Angeles','101','Guadalupe','Aguascalientes','Aguascalientes','92801','Gerente','1000','8 a 9','vespertino','100','10','2010-05-06');
-  ";
-if ($conn->query($sql) === TRUE) {
-  echo "Tablas creadas existosamente";
-} else {
-  echo "8.- Error creando tablas: " . $conn->error;
-}
-$sql="CREATE TABLE Actualizarservicio(
-  nuevopaquete int(2) NOT NULL,
-  cuentaid int(10) NOT NULL
-);";
-if ($conn->query($sql) === TRUE) {
-echo "Tablas creadas existosamente";
-} else {
-echo "9.- Error creando tablas: " . $conn->error;
-}
 $conn->close();
 ?> 
