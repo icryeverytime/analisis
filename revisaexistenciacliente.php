@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 $dbname = "myDB";
 
-$correo="christianantonio12322@gmail.com";
+$correo=$_POST["name"];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -55,7 +55,7 @@ if ($result->num_rows > 0) {
         $codigopostal=$row["cp"];
   }
 } else {
-  echo "No existe el cliente";
+
 }
 $string.="
     <tr>

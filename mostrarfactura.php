@@ -12,9 +12,9 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "myDB";
-if (isset($_POST["id"]))
+if (isset($_POST["name"]))
 {
-    $id=$_POST["id"];
+    $id=$_POST["name"];
 }
 else{
   $id=$_SESSION["id"];

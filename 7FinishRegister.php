@@ -43,7 +43,7 @@
             </li>
             <?php 
         session_start();
-        if(empty($_SESSION["id"]))
+        if(empty($_SESSION["id"]) and (empty($_SESSION["empleado"])))
         {
         ?>
 			<li class="nav-item dropdown">
@@ -55,7 +55,7 @@
 				<li><a class="dropdown-item" href="6LogIn.php">Log In</a></li>
 			  </ul>
         <?php
-        }else{
+        }else if(!empty($_SESSION["id"])){
           ?>
           <li class="nav-item dropdown">
 			  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,6 +68,21 @@
         <li><a class="dropdown-item" href="updateService.php">Update Service</a></li>
 			  </ul>
           <?php
+        }
+        else if(!empty($_SESSION["empleado"]))
+        {
+          ?>
+          <li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <?php echo $_SESSION["nombre"]; ?>
+			  </a>
+			  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<li><a class="dropdown-item" href="endsession.php">Logout</a></li>
+				<li><a class="dropdown-item" href="administracion.php">Administracion</a></li>
+			  </ul>
+
+        
+        <?php
         }
         ?>
 			  </li>

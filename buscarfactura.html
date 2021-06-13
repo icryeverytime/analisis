@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <style type="text/css" media="print">
+            button{
+              display:none;
+            }
+            label{
+                display: none;
+            }
+            input{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="contactForms" action="mostrarfactura.php" method="POST">
+            <label for="name">Account id:</label>
+            <input name="name" type="text" required placeholder="Please enter email">
+            <button type="submit">Look</button>
+        </form>
+        
+        <div id="contactResponses"></div>
+    </body>
+    <script>
+        $("#contactForms").submit(function(event) 
+        {
+            /* stop form from submitting normally */
+            event.preventDefault();
+   
+            /* get some values from elements on the page: */
+            var $form = $( this ),
+                $submit = $form.find( 'button[type="submit"]' ),
+                name_value = $form.find( 'input[name="name"]' ).val(),
+                url = $form.attr('action');
+   
+            /* Send the data using post */
+            var posting = $.post( url, { 
+                              name: name_value, 
+                          });
+   
+            posting.done(function( data )
+            {
+                /* Put the results in a div */
+                $( "#contactResponses" ).html(data);
+   
+                /* Change the button text. */
+               
+            });
+       });
+   </script>
+</html>   
