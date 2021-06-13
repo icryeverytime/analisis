@@ -52,5 +52,6 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 $conn->close();
-header('Location: index.php?action=success');
+header('Location: correofactura.php');
+exit;
 ?>

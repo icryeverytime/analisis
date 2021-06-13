@@ -56,7 +56,16 @@
         #dos{
           color: red;
         }
+        
     </style>
+     <style type="text/css" media="print">
+            .footer{
+              display: none;
+            } 
+            h1{
+              display: none;
+            }
+        </style>
     <title>Inicio</title>
   </head>
   <body>

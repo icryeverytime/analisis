@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    </head>
+    <body>
+        <form id="contactForm" action="revisaexistenciacliente.php" method="POST">
+            <label for="name">Email to look for data</label>
+            <input name="name" type="text" required placeholder="Please enter email">
+            <button type="submit">Look</button>
+        </form>
+        <div id="contactResponse"></div>
+    </body>
+    <script>
+        $("#contactForm").submit(function(event) 
+        {
+            /* stop form from submitting normally */
+            event.preventDefault();
+   
+            /* get some values from elements on the page: */
+            var $form = $( this ),
+                $submit = $form.find( 'button[type="submit"]' ),
+                name_value = $form.find( 'input[name="name"]' ).val(),
+                url = $form.attr('action');
+   
+            /* Send the data using post */
+            var posting = $.post( url, { 
+                              name: name_value, 
+                          });
+   
+            posting.done(function( data )
+            {
+                /* Put the results in a div */
+                $( "#contactResponse" ).html(data);
+   
+                /* Change the button text. */
+               
+            });
+       });
+   </script>
+</html>   

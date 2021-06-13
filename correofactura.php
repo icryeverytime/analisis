@@ -1,21 +1,22 @@
+
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "myDB";
-
-$correo="christianantonio12322@gmail.com";
-$contra="123";
+session_start();
+$id=$_SESSION["id"];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Conexion fallo: " . $conn->connect_error);
 }
-$sql = "SELECT idcliente FROM Cliente WHERE (contra='$contra' AND correo='$correo')";
+$sql = "SELECT contra,correo FROM Cliente WHERE (idcliente='$id')";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-        $id=$row["idcliente"];  
+        $correo=$row["correo"];
+        $contra=$row["contra"];  
   }
 } else {
   echo "0 results";
@@ -69,24 +70,67 @@ if ($result->num_rows > 0) {
   echo "0 results factura";
 }
 
-require '/usr/share/php/libphp-phpmailer/class.phpmailer.php';
-require '/usr/share/php/libphp-phpmailer/class.smtp.php';
-$mail = new PHPMailer;
-$mail->setFrom('chrisitianantonio12322@gmail.com');
-$mail->addAddress('christianantonio123222@gmail.com');
-$mail->Subject = 'Message sent by PHPMailer';
-$mail->Body = 'Hello! use PHPMailer to send email using PHP';
-$mail->IsSMTP();
-$mail->SMTPSecure = 'ssl';
-$mail->Host = 'ssl://smtp.gmail.com';
-$mail->SMTPAuth = true;
-$mail->Port = 465;
-$mail->Username = 'christianantonio12322@gmail.com';
-$mail->Password = 'chrisanto123';
-if(!$mail->send()) {
-  echo 'Email is not sent.';
-  echo 'Email error: ' . $mail->ErrorInfo;
-} else {
-  echo 'Email has been sent.';
-}
+$string.="Numero de cuenta del cliente: ".$id;
+$string.="<br>";
+$string.="Direccion: ".$nuexterior." ".$calle.", ".$colonia.", ".$municipio.". ".$estado.", ".$cp;
+$string.="<br>";
+$string.="Regimen fiscal: ".$regimenfiscal;
+$string.="<br>";
+$string.="Direccion : Av. Lázaro Cárdenas No. 2500. Col Residencial San Agustín 66260, Monterrey, N.L. México <br>";
+$string.="Folio de la factura: ".$foliofact."<br>";
+$string.="Fecha de expedicion: ".$facturafecha."<br>";
+$string.="Numero de paquete: ".$numpaq."<br>";
+$string.="Periodo del uso de servicio: ".$periodo."<br>";
+$string.="Feca del siguiente pago: ".$fechasigpago."<br>";
+$string.="Valor unitario consignado en numero: ".$valorunitario."<br>";
+$string.="Importe total en numero: ".$importetotalnumer."<br>";
+$string.="Importe total en letra: ".$importetotalletra."<br>";
+$string.="Forma de pago: ".$formadepago."<br>";
+$string.="Monto de los impuestos: ".$montodeimpuestos."<br>";
+$string.="Codigo de barras: ".$codigobarras."<br>";
+$string.="Numero de Serie del CSDD del emisor: ".$serieCSSDDemisor."<br>";
+$string.="Numero de Serie del CSDD del SAT: ".$serieCSDDSat."<br>";
+$string.="Leyenda Comprobante fiscal: ".$leyendafinal."<br>";
+$string.="Referencia Bancaria: ".$referencia."<br>";
+$string.="Fecha de emision de certificaion de la factura electronica: ".$facturafecha."<br>";
+$string.="Cadena Original del complemento de Certificacion Digital del SAT: ".$cadenasat."<br>";  
+echo $string;
+
 ?> 
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <title>Send Mail</title>
+  <script src=
+    "https://smtpjs.com/v3/smtp.js">
+  </script>
+  
+  <script type="text/javascript">
+    function sendEmail() {
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "internetcompany68@gmail.com",
+        Password: "@1234abc",
+        To: '<?php echo $correo ?>',
+        From: "internetcompany68@gmail.com",
+        Subject: "Invoice",
+        Body: "<?php echo $string ?>",
+      })
+    }
+  </script>
+</head>
+  
+<body>
+  <form method="post">
+    <input type="button" value="Send Email" 
+        onclick="sendEmail()" />
+  </form>
+</body>
+  
+</html> 
+<?php 
+echo '<script>sendEmail();</script>';
+header('Location: index.php');
+exit;
+?>
