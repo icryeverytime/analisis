@@ -4,6 +4,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "myDB";
+$band=1;
 if(!empty($_SESSION["empleado"])){
   $conn = new mysqli($servername, $username, $password, $dbname);
   if ($conn->connect_error) {

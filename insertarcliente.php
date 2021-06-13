@@ -6,9 +6,9 @@ $dbname = "myDB";
 
 
 //insert
-$nombre="Christian Viramontes";
-$correo="christianantonio12322@gmail.com";
-$contra="123";
+$nombre=$_POST["name"]." ".$_POST["lastname"];
+$correo=$_POST["email"];
+$contra=$_POST["pass"];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -34,6 +34,7 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
-
 $conn->close();
+header ('Location: 6Login.php');
+exit;
 ?>

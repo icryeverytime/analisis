@@ -6,7 +6,7 @@ $password = "";
 $dbname = "myDB";
 
 $id=$_SESSION["id"];
-$nuevopaquete=2;
+$nuevopaquete=$_POST["boton1"];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -25,5 +25,7 @@ if(!empty($_SESSION["id"])){
   }else{
     echo "False";
   }
-
+  $conn->close();
+  header ('Location: index.php');
+exit;
 ?>

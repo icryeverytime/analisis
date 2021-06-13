@@ -1,0 +1,83 @@
+/*Header*/
+.my-nav{
+    background-color: black;
+}
+@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');     
+#navbarSupportedContent{
+    font-family: 'Castoro';
+    font-size: 25px;
+    color: whitesmoke;
+}
+
+.pie{
+    background-color: black;
+}
+a, .mr-3{
+    color: whitesmoke;
+}
+a, .tw, .fb, .ig{
+    color: whitesmoke;
+    align-items: center;
+}
+.copyright{
+    color: whitesmoke;
+}
+.internet{
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+.divsec{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    text-align: center;
+}
+
+.AreaDeServicios{
+    display: flex;
+    justify-content: space-around;
+}
+#Services > p{
+    font-weight: bold;
+    text-align: center;
+}
+#Services > img{
+    height: 200px;
+    width: 250px;
+    border-radius: 2em;
+}
+
+
+
+.left { 
+    display:table-cell; 
+    vertical-align:middle; 
+    width:120px; 
+    margin:0; 
+    padding:0;   
+    height:80px; 
+    background-image:url(URL); 
+    background-size:100%; 
+}
+
+.right { 
+    display:table-cell; 
+    vertical-align:middle; 
+    width:280px; 
+    padding:0 10px; 
+}
+.wrapper {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex;
+      flex-wrap: wrap;
+    }
+ .caja{
+      width: 40%;
+    }
+.caja ul{
+    list-style: none;
+}

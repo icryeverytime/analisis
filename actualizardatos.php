@@ -5,17 +5,17 @@ $username = "root";
 $password = "";
 $dbname = "myDB";
 
-$id=$_SESSION["id"];
-$rfc=$_POST["RFC"];
-$telefono=$_POST["telephone"];
-$segurosocial=$_POST["SSN"];
-$fechadenacimiento=$_POST["Birthday"];
-$calle=$_POST["Street"];
-$nuexterior=$_POST["Number"];
-$colonia=$_POST["Suburb"];
-$municipio=$_POST["Town"];
-$codigopostal=$_POST["ZipCode"];
-$estado=$_POST["State"];
+$id=$_POST["boton1"];
+$rfc=$_POST["boton8"];
+$telefono=$_POST["boton9"];
+$segurosocial=$_POST["boton10"];
+$fechadenacimiento=$_POST["boton11"];
+$calle=$_POST["boton2"];
+$nuexterior=$_POST["boton3"];
+$colonia=$_POST["boton4"];
+$municipio=$_POST["boton5"];
+$codigopostal=$_POST["boton7"];
+$estado=$_POST["boton6"];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -28,8 +28,7 @@ if ($conn->query($sql) === TRUE) {
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
-$sql ="INSERT Direccion (calle, nuexterior, colonia, municipio, estado, cp, id_cliente)
-    VALUES ('$calle','$nuexterior','$colonia','$municipio','$estado','$codigopostal','$id');";
+$sql ="UPDATE Direccion SET calle='$calle', nuexterior='$nuexterior',colonia='$colonia',municipio='$municipio',estado='$estado',cp='$codigopostal' WHERE id_cliente='$id'";
     if ($conn->query($sql) === TRUE) {
         echo "insertado correctamente";
       } else {
@@ -42,6 +41,7 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 $conn->close();
-header ('Location: .php');
+header ('Location: administracion.php');
+
 exit;     
 ?>

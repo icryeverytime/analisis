@@ -51,7 +51,7 @@ if(!empty($_SESSION["empleado"])){
         <td>".$row["estado"]."</td>
         <td>".$row["cp"]."</td>
         <td>
-        <form method=\"post\" action=\"datoscliente.php\">
+        <form method=\"post\" action=\"actualizardatos.php\">
         <input type=\"hidden\" id=\"boton1\" name=\"boton1\" value=\"".$row["cuentaid"]."\">
         <input type=\"hidden\" id=\"boton2\" name=\"boton2\" value=\"".$row["calle"]."\">
         <input type=\"hidden\" id=\"boton3\" name=\"boton3\" value=\"".$row["nuexterior"]."\">
