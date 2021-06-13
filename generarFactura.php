@@ -3,9 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "myDB";
-$contra="123";
-$correo="christianantonio12322@gmail.com";
-
+session_start();
 $id=$_SESSION["id"];
 
 $currentdate=date('Y-m-d');
@@ -20,16 +18,6 @@ $cadenasat="44";
 $conn = new mysqli($servername, $username, $password,$dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT idcliente FROM Cliente WHERE (contra='$contra' AND correo='$correo')";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-        $id=$row["idcliente"]; 
-  }
-} else {
-  echo "1. 0 results<br>";
 }
 
 $sql = "SELECT num_paq FROM Servicio WHERE (id_cuenta='$id')";
@@ -64,4 +52,5 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 $conn->close();
+header('Location: index.php?action=success');
 ?>

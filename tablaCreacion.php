@@ -162,13 +162,15 @@ if ($conn->query($sql) === TRUE) {
   echo "8.- Error creando tablas: " . $conn->error;
 }  
 $sql="INSERT INTO Paquete(numpaq,bits,canales,costo)
-    VALUES(1,20,75,200);
+    VALUES(5,10,50,100);
     INSERT INTO Paquete(numpaq,bits,canales,costo)
-    VALUES(2,50,75,300);
+    VALUES(4,20,75,200);
     INSERT INTO Paquete(numpaq,bits,canales,costo)
-    VALUES(3,100,100,400);
+    VALUES(3,50,100,300);
     INSERT INTO Paquete(numpaq,bits,canales,costo)
-    VALUES(4,200,300,500);
+    VALUES(2,100,100,400);
+    INSERT INTO Paquete(numpaq,bits,canales,costo)
+    VALUES(1,200,300,500);
     ";
 if ($conn->multi_query($sql) === TRUE) {
     echo "Tablas creadas existosamente";

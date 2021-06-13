@@ -1,0 +1,26 @@
+/*Header*/
+.my-nav{
+    background-color: black;
+}
+@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');     
+#navbarSupportedContent{
+    font-family: 'Castoro';
+    font-size: 25px;
+    color: whitesmoke;
+}
+body{
+    background-color: white;
+}
+.pie{
+    background-color: black;
+}
+a, .mr-3{
+    color: whitesmoke;
+}
+a, .tw, .fb, .ig{
+    color: whitesmoke;
+    align-items: center;
+}
+.copyright{
+    color: whitesmoke;
+}

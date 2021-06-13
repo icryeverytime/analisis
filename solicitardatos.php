@@ -1,14 +1,14 @@
 <?php
-$rfc="VIJA990409123";
-$telefono="4492874398";
-$segurosocial="IMSS-02-008";
-$fechadenacimiento="1999-04-09";
+$rfc=$_POST["RFC"];
+$telefono=$_POST["telephone"];
+$segurosocial=$_POST["SSN"];
+$fechadenacimiento=$_POST["Birthday"];
 
-$calle="Felipe Angeles";
-$nuexterior=101;
-$colonia="Guadalupe";
-$municipio="Aguascalientes";
-$estado="Aguascalientes";
+$calle=$_POST["Street"];
+$nuexterior=$_POST["Number"];
+$colonia=$_POST["Suburb"];
+$municipio=$_POST["Town"];
+$estado=$_POST["State"];
 $codigopostal=92801;
 session_start();
 if(!empty($_SESSION["id"])){
@@ -30,4 +30,6 @@ if(!empty($_SESSION["id"])){
     }
     $conn->close();
 }
+header ('Location: index.php');
+exit;
 ?>

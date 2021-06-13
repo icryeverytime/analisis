@@ -5,13 +5,14 @@ $username = "root";
 $password = "";
 $dbname = "myDB";
 
-$numeropaq=1;
+$numeropaq=$_POST["boton1"];
 $id=$_SESSION["id"];
+$formadepago="Tarjeta";
 echo $id;
 $currentdate=date('Y-m-d');
 $d=strtotime("+1 Months");
 $sigpago=date("Y-m-d", $d);
-$formadepago="efectivo";
+
 $referencia="referencia";
 if(!empty($_SESSION["id"])){
   $conn = new mysqli($servername, $username, $password, $dbname);
@@ -44,7 +45,10 @@ if(!empty($_SESSION["id"])){
     }
 }
 else{
-  echo "comienza una session como usuario";
+  header ('Location: index.php');
+  exit;
 }
 $conn->close();
+header ('Location: 4bundles.php ');
+  exit;
 ?>
