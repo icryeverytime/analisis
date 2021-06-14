@@ -65,6 +65,9 @@
             h1{
               display: none;
             }
+            table{
+              display: none;
+            }
         </style>
     <title>Inicio</title>
   </head>

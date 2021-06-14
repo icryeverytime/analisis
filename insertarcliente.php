@@ -35,6 +35,6 @@ if ($result->num_rows > 0) {
   echo "0 results";
 }
 $conn->close();
-header ('Location: 6Login.php');
+header ('Location: 6LogIn.php');
 exit;
 ?>

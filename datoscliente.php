@@ -42,6 +42,6 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 $conn->close();
-header ('Location: .php');
-exit;     
+header ('Location: 6LogIn.php');
+exit; 
 ?>

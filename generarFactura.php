@@ -7,11 +7,11 @@ session_start();
 $id=$_SESSION["id"];
 
 $currentdate=date('Y-m-d');
-$regimenfiscal="regimen";
-$codigobarras="codigobarras";
+$regimenfiscal="MORAL";
+$codigobarras="101122931";
 $serieemisor="342234";
 $seriesat="698712";
-$leyendafinal="hola";
+$leyendafinal="682139121";
 $cadenasat="44";
 
 

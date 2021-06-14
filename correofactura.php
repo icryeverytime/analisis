@@ -116,14 +116,15 @@ echo $string;
         From: "internetcompany68@gmail.com",
         Subject: "Invoice",
         Body: "<?php echo $string ?>",
-      })
+      }),
+      setTimeout(function(){ window.location = 'index.php'; }, 1000);
     }
   </script>
 </head>
   
 <body>
   <form method="post">
-    <input type="button" value="Send Email" 
+    <input type="button" value="Regresar a pagina incial" 
         onclick="sendEmail()" />
   </form>
 </body>
@@ -131,6 +132,5 @@ echo $string;
 </html> 
 <?php 
 echo '<script>sendEmail();</script>';
-header('Location: index.php');
 exit;
 ?>
