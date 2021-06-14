@@ -30,6 +30,6 @@ if ($conn->query($sql) === TRUE) {
   }
 
   $conn->close();
-  header('Location:actualizacionservicio.php');
+  header('Location: administracion.php');
   exit;
 ?>

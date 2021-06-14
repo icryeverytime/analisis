@@ -13,7 +13,7 @@ $currentdate=date('Y-m-d');
 $d=strtotime("+1 Months");
 $sigpago=date("Y-m-d", $d);
 
-$referencia="referencia";
+$referencia="4209998812";
 if(!empty($_SESSION["id"])){
   $conn = new mysqli($servername, $username, $password, $dbname);
   if ($conn->connect_error) {
@@ -49,6 +49,6 @@ else{
   exit;
 }
 $conn->close();
-header ('Location: 4bundles.php ');
+header ('Location: index.php ');
   exit;
 ?>

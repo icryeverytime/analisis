@@ -68,7 +68,7 @@ if ($conn->query($sql) === TRUE) {
 $sql="CREATE TABLE Direccion(
     iddirecion int(10) NOT NULL AUTO_INCREMENT,
     calle varchar(30) NOT NULL,
-    nuexterior int(6) NOT NULL,
+    nuexterior varchar(30) NOT NULL,
     colonia varchar(30) NOT NULL,
     municipio varchar(30) NOT NULL,
     estado varchar(30) NOT NULL,
@@ -138,7 +138,7 @@ echo "Actualizarservicio" . $conn->error;
 $sql="CREATE TABLE Actualizardatos(
   cuentaid int(10) NOT NULL UNIQUE,
   calle varchar(30) NOT NULL,
-  nuexterior int(6) NOT NULL,
+  nuexterior varchar(30) NOT NULL,
   colonia varchar(30) NOT NULL,
   municipio varchar(30) NOT NULL,
   estado varchar(30) NOT NULL,
