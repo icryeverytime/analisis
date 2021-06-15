@@ -109,6 +109,8 @@ if( $_GET['action'] == 'success' ) {
 				<li><a class="dropdown-item" href="generarFactura.php">Request Invoice</a></li>
         <li><a class="dropdown-item" href="updatedata.php">Update Data</a></li>
         <li><a class="dropdown-item" href="updateService.php">Update Service</a></li>
+        <li><a class="dropdown-item" href="updatefactura.php">Update Factura</a></li>
+        <li><a class="dropdown-item" href="instalacion.php">Programar instalacion</a></li>
 			  </ul>
           <?php
         }

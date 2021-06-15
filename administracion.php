@@ -13,38 +13,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="CSS/1Index.css">
+    <link rel="stylesheet" href="CSS/6LogIn.css">
     
     <!-- Link para font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
-        .text{
-            text-align: justify;
-            margin-left: 5%;
-            margin-top: 5%;
-        }
-        .text1{
-            font-size: px;
-            color: black;
-        }     
-        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
-        .text2{
-            font-family: 'Rajdhani';
-            font-size: 45px;
-            color: black;
-        }     
-        .text3{
-            font-size: 35px;
-            font-family: 'Open Sans Condensed';
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-        .text4{
-            font-size: 15px;
-            font-family: 'Jost';
-        }
-        #dos{
+      #dos{
           display: none;
         }
         #logout:hover #dos{
@@ -56,7 +31,19 @@
         #dos{
           color: red;
         }
-        
+        table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  height: 70px;
+}
+       
     </style>
      <style type="text/css" media="print">
             .footer{
@@ -68,12 +55,12 @@
             table{
               display: none;
             }
-        </style>
-    <title>Inicio</title>
+    </style>
+    <title>Instalacion</title>
   </head>
   <body>
-<header>
-    <nav class="navbar my-nav navbar-expand-lg">
+   <header>
+    <nav class="navbar my-nav navbar-expand-lg fixed-top">
       <a class="navbar-brand" href="index.php"><img src="Imagenes/logo2.png" width="100px;" alt="Logo Xfinity"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
@@ -90,7 +77,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="4bundles.php">Bundles</a>
             </li>
-        <?php 
+            <?php 
         session_start();
         if(empty($_SESSION["id"]) and (empty($_SESSION["empleado"])))
         {
@@ -139,14 +126,13 @@
        </div>
     </nav>
       </header>
+    <br>
     
-
-<?php
-include 'juntar.php'; 
-?>
-
-
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br> 
+    <!-- multistep form -->
+        <br><br><br><?php include 'juntar.php';
+    ?>
+  
+    <br><br><br><br>
 <footer class="footer pie py-4">
   <div class="container">
       <div class="row align-items-right">
@@ -162,7 +148,8 @@ include 'juntar.php';
       </div>
   </div>
 </footer>
-   <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -172,6 +159,5 @@ include 'juntar.php';
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     -->
-    
   </body>
 </html>

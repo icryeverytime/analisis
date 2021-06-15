@@ -11,7 +11,7 @@ if(!empty($_SESSION["empleado"])){
   if ($conn->connect_error) {
     die("Conexion fallo: " . $conn->connect_error);
   }
-  $string.="<table>
+  $string2.="<h1>Actualizar Servicio</h1><table>
       <tr>
           <th>Id Cuenta </th>
           <th>Nuevo paquete </th>
@@ -22,7 +22,7 @@ if(!empty($_SESSION["empleado"])){
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-      $string.="
+      $string2.="
       <tr>
           <td>".$row["cuentaid"]."</td>
           <td>".$row["nuevopaquete"]."</td>
@@ -39,16 +39,17 @@ if(!empty($_SESSION["empleado"])){
   } else {
     $band=0;
   }
-  $string.="</table>";
+  $string2.="</table>";
   if($band==0)
   {
       echo "<h1>No existen peticiones a actualizar servicio</h1>";
   }
   else{
-      echo $string;
+      echo $string2;
   }
+  $conn->close();
 }else{
   echo "no eres el empleado";
 }
-$conn->close();
+
 ?>

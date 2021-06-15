@@ -66,7 +66,7 @@
   <body>
    <header>
     <nav class="navbar my-nav navbar-expand-lg fixed-top">
-      <a class="navbar-brand" href="index.html"><img src="Imagenes/logo2.png" width="100px;" alt="Logo Xfinity"></a>
+      <a class="navbar-brand" href="index.php"><img src="Imagenes/logo2.png" width="100px;" alt="Logo Xfinity"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
       </button>
@@ -74,13 +74,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="2internet.html">Internet</a>
+                <a class="nav-link" href="2internet.php">Internet</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="3tv.html">TV & Streaming</a>
+                <a class="nav-link" href="3tv.php">TV & Streaming</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="4bundles.html">Bundles</a>
+                <a class="nav-link" href="4bundles.php">Bundles</a>
             </li>
             <?php 
         session_start();
@@ -107,6 +107,8 @@
 				<li><a class="dropdown-item" href="generarFactura.php">Request Invoice</a></li>
         <li><a class="dropdown-item" href="updatedata.php">Update Data</a></li>
         <li><a class="dropdown-item" href="updateService.php">Update Service</a></li>
+        <li><a class="dropdown-item" href="updatefactura.php">Update Factura</a></li>
+        <li><a class="dropdown-item" href="instalacion.php">Programar instalacion</a></li>
 			  </ul>
           <?php
         }

@@ -9,16 +9,20 @@
  if ($conn->connect_error) {
  die("Conexion fallo: " . $conn->connect_error);
  }
- $sql="SELECT num_paq FROM Servicio WHERE (id_cuenta='$id')";
+ $sql="SELECT regimenfiscal,serieCSDDemisor,serieCSDDsat,leyendafinal,cadenaSAT FROM Factura WHERE (id_cuentaFAC='$id')";
  $result = $conn->query($sql);
  if ($result->num_rows > 0) {
    while($row = $result->fetch_assoc()) {
-         $package=$row["num_paq"];
+         $regimenfiscal=$row["regimenfiscal"];
+         $csd=$row["serieCSDDemisor"];
+         $csddsat=$row["serieCSDDsat"];
+         $leyenda=$row["leyendafinal"];
+         $cadenasat=$row["cadenaSAT"];
    }
  } else {
    echo "No existe el cliente";
  }
-
+ 
  $conn->close();
 ?>
 <!doctype html>
@@ -118,46 +122,24 @@
     <br>
     
     <!-- multistep form -->
-    <div id="msform">
+    <form id="msform" method="POST" action="solicitarfactura.php">
        <!-- fieldsets -->
       <fieldset>
         <h2 class="fs-title">WELCOME TO XFINITY</h2>
         <h3 class="fs-subtitle">Change information you want to change</h3>
-        <h3 class="fs-subtitle">Current bundle is number <?php echo $package?></h3>
-        <h3 class="fs-subtitle">Choose the new bundle</h3>
-        <h2 class="fs-title">Bundle #1</h2>
-        <h3 class="fs-subtitle">200Mbps Symmetrical+ 300 Channels + ClaroVideo+ Blim + PH Premium + Spotify + Netflix</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="1">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form><br>
-        <h2 class="fs-title">Bundle #2</h2>
-        <h3 class="fs-subtitle">100Mbps + 100 Channels + 30 HD Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="2">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form><br>
-        <h2 class="fs-title">Bundle #3</h2>
-        <h3 class="fs-subtitle">50Mbps + 100 Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">ls
-                  <input type="hidden" id="boton1" name="boton1" value="3">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form><br>
-        <h2 class="fs-title">Bundle #4</h2>
-        <h3 class="fs-subtitle">20Mbps + 75 Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="4">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form>
-              <br>
-        <h2 class="fs-title">Bundle #5</h2>
-        <h3 class="fs-subtitle">10Mbps + 50 Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="5">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form>
+        <h3 class="fs-subtitle">Regimen fiscal</h3>
+        <input type="text" name="regimen" value="<?php echo $regimenfiscal ?>" />
+        <h3 class="fs-subtitle">Numero de serie CSSD del emisor</h3>
+        <input type="text" name="cssd" value="<?php echo $csd ?>"/>
+        <h3 class="fs-subtitle">Numero de serie CSDD del SAT</h3>
+        <input type="text" name="cssdsat" value="<?php echo $csddsat?>"/>
+        <h3 class="fs-subtitle">Leyenda Final</h3>
+        <input type="text" name="leyenda" value="<?php echo $leyenda?>"/>
+        <h3 class="fs-subtitle">Cadena del SAT</h3>
+        <input type="text" name="sat" value="<?php echo $cadenasat?>"/>
+        <input type="submit" name="next" class="next action-button" value="Next" />
       </fieldset>   
-    </div>
+    </form>
     
     <br>
 <footer class="footer pie py-4">

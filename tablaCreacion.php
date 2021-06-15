@@ -153,6 +153,31 @@ echo "Tablas creadas existosamente";
 } else {
 echo "9.- Error creando tablas: " . $conn->error;
 }
+$sql="CREATE TABLE Actualizarfactura(
+  cuentaid int(10) NOT NULL UNIQUE,
+  regimenfiscal varchar(30) NOT NULL,
+  numerodeserieCSSD varchar(30) NOT NULL,
+  numerodeserieSAT varchar(30) NOT NULL,
+  leyenda varchar(30) NOT NULL,
+  cadenaSAT varchar(30) NOT NULL
+);";
+if ($conn->query($sql) === TRUE) {
+echo "Tablas creadas existosamente";
+} else {
+echo "Actualizarfactura: " . $conn->error;
+}
+$sql="CREATE TABLE Instalacion(
+  cuentaid int(10) NOT NULL UNIQUE,
+  horadeinicio varchar(30) NOT NUll,
+  fecha varchar(30) NOT NULL,
+  folioinstalacion int(10) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (folioinstalacion)
+);";
+if ($conn->query($sql) === TRUE) {
+echo "Tablas creadas existosamente";
+} else {
+echo "9.- Error creando tablas: " . $conn->error;
+}
 $sql="INSERT INTO Empleado(nombre,correo,telefono,segurosocial,fechadenacimiento,contra,calle,nuexterior,colonia,municipio,estado,codigopostal,puesto,sueldo,horario,turno,bono,horas,fechadecontratacion)
   VALUES('Christian','christianantonio123222@gmail.com','4492874398','IMSS-02-008','1999-04-09','123','Felipe Angeles','101','Guadalupe','Aguascalientes','Aguascalientes','92801','Gerente','1000','8 a 9','vespertino','100','10','2010-05-06');
   ";;

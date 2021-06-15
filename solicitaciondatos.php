@@ -14,7 +14,7 @@ if(!empty($_SESSION["empleado"])){
   if ($conn2->connect_error) {
     die("Conexion fallo: " . $conn2->connect_error);
   }
-  $string.="<table>
+  $string3.="<table>
       <tr>
           <th>Id Cuenta </th>
           <th>RFC</th> 
@@ -36,7 +36,7 @@ if(!empty($_SESSION["empleado"])){
     while($row = $result->fetch_assoc()) 
     {
       $idabuscar=$row["cuentaid"];
-      $string.="
+      $string3.="
       <h1>Datos a actualizar</h1>
       <tr>
         <td>".$row["cuentaid"]."</td>
@@ -75,7 +75,7 @@ if(!empty($_SESSION["empleado"])){
   }
   if($i==0)
   {
-    echo $string;
+    echo $string3;
   }
   else{
     echo "<h1>Actualmente no existen datos a actualizar</h1>";

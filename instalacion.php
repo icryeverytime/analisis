@@ -1,26 +1,3 @@
-<?php
- $servername = "localhost";
- $username = "root";
- $password = "";
- $dbname = "myDB";
- session_start();
- $id=$_SESSION["id"];
- $conn = new mysqli($servername, $username, $password, $dbname);
- if ($conn->connect_error) {
- die("Conexion fallo: " . $conn->connect_error);
- }
- $sql="SELECT num_paq FROM Servicio WHERE (id_cuenta='$id')";
- $result = $conn->query($sql);
- if ($result->num_rows > 0) {
-   while($row = $result->fetch_assoc()) {
-         $package=$row["num_paq"];
-   }
- } else {
-   echo "No existe el cliente";
- }
-
- $conn->close();
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,14 +13,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="CSS/7FinishRegister.css">
+    <link rel="stylesheet" href="CSS/6LogIn.css">
     
     <!-- Link para font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     
     <style>
+      #dos{
+          display: none;
+        }
+        #logout:hover #dos{
+            display: inline;
+        }
+        #logout:hover #primero{
+          display: none;
+        }
+        #dos{
+          color: red;
+        }
     </style>
-    <title>Register</title>
+    <title>Instalacion</title>
   </head>
   <body>
    <header>
@@ -89,8 +78,6 @@
 				<li><a class="dropdown-item" href="generarFactura.php">Request Invoice</a></li>
         <li><a class="dropdown-item" href="updatedata.php">Update Data</a></li>
         <li><a class="dropdown-item" href="updateService.php">Update Service</a></li>
-        <li><a class="dropdown-item" href="updatefactura.php">Update Factura</a></li>
-        <li><a class="dropdown-item" href="instalacion.php">Programar instalacion</a></li>
 			  </ul>
           <?php
         }
@@ -118,48 +105,19 @@
     <br>
     
     <!-- multistep form -->
-    <div id="msform">
+    <form id="msform" method="POST" action="insertarinstalacion.php">
        <!-- fieldsets -->
       <fieldset>
-        <h2 class="fs-title">WELCOME TO XFINITY</h2>
-        <h3 class="fs-subtitle">Change information you want to change</h3>
-        <h3 class="fs-subtitle">Current bundle is number <?php echo $package?></h3>
-        <h3 class="fs-subtitle">Choose the new bundle</h3>
-        <h2 class="fs-title">Bundle #1</h2>
-        <h3 class="fs-subtitle">200Mbps Symmetrical+ 300 Channels + ClaroVideo+ Blim + PH Premium + Spotify + Netflix</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="1">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form><br>
-        <h2 class="fs-title">Bundle #2</h2>
-        <h3 class="fs-subtitle">100Mbps + 100 Channels + 30 HD Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="2">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form><br>
-        <h2 class="fs-title">Bundle #3</h2>
-        <h3 class="fs-subtitle">50Mbps + 100 Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">ls
-                  <input type="hidden" id="boton1" name="boton1" value="3">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form><br>
-        <h2 class="fs-title">Bundle #4</h2>
-        <h3 class="fs-subtitle">20Mbps + 75 Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="4">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form>
-              <br>
-        <h2 class="fs-title">Bundle #5</h2>
-        <h3 class="fs-subtitle">10Mbps + 50 Channels</h3>
-        <form method="post" action="solicitaractualizacion.php">
-                  <input type="hidden" id="boton1" name="boton1" value="5">
-                  <button type="submit" class="btn btn-outline-dark"><span>BUY</span></button>
-              </form>
+        <h2 class="fs-title">Instalation appointment</h2>
+        <label for="appt">Select a time:</label>
+        <input type="time" id="appt" name="appt" min="09:00" max="18:00">
+        <label for="birthday">Select a date:</label>
+        <input type="date" id="date" name="date">
+        <input type="submit" name="next" class="next action-button" value="Next" />
       </fieldset>   
-    </div>
+    </form>
     
-    <br>
+    <br><br><br><br>
 <footer class="footer pie py-4">
   <div class="container">
       <div class="row align-items-right">
