@@ -3,7 +3,7 @@
 session_start();
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "123456789";
 $dbname = "myDB";
 
 $correo=$_POST["email"];

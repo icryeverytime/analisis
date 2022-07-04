@@ -3,7 +3,7 @@
 session_start();
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "123456789";
 $dbname = "myDB";
 $band=1;
 if(!empty($_SESSION["empleado"])){

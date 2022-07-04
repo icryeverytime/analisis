@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -61,7 +64,6 @@
                 <a class="nav-link" href="4bundles.php">Bundles</a>
             </li>
             <?php 
-        session_start();
         if(empty($_SESSION["id"]) and (empty($_SESSION["empleado"])))
         {
         ?>

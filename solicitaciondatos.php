@@ -3,7 +3,7 @@ session_start();
 $i=0;
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "123456789";
 $dbname = "myDB";
 if(!empty($_SESSION["empleado"])){
   $conn = new mysqli($servername, $username, $password, $dbname);

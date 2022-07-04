@@ -14,7 +14,7 @@ session_start();
 if(!empty($_SESSION["id"])){
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "123456789";
     $dbname = "myDB";
     $id=$_SESSION["id"];
     $conn = new mysqli($servername, $username, $password, $dbname);

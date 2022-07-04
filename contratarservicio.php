@@ -2,7 +2,7 @@
 session_start();
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "123456789";
 $dbname = "myDB";
 
 $numeropaq=$_POST["boton1"];
@@ -21,7 +21,7 @@ if(!empty($_SESSION["id"])){
   }
 
 
-  $sql = "SELECT costo FROM Paquete WHERE (numpaq='$numeropaq')";
+  $sql = "SELECT costo FROM paquete WHERE (numpaq='$numeropaq')";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
